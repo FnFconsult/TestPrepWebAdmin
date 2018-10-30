@@ -53,7 +53,7 @@ module.exports = {
   devServer: {
       proxy: [{
           path: '/api/**',
-          target: 'http://127.0.0.1:7500'
+          target: 'http://127.0.0.1:9001'
       }]
   }  
 }

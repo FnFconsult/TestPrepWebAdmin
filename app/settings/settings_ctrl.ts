@@ -29,6 +29,8 @@ class SettingCtrl {
 	newRecord: ILookUp;
 	model: ILookUpModel;
 	records: Array<ILookUp>;
+	types: Array<any>
+	kinds: Array<any>
 
 	saving: boolean
 	deleting: boolean
@@ -43,6 +45,10 @@ class SettingCtrl {
 		this.model = _.findWhere(LookUps.Models, { name: $stateParams['setting'] })
 		this.fetch()
 		this.closeForm()
+		if(this.model.name == 'types') this.fetchKinds()
+		else if(this.model.name == 'categories'){
+			this.fetchKinds()
+		} 
 	}
 
 	addNew() {
@@ -71,6 +77,25 @@ class SettingCtrl {
 				this.records = response.data
 			})
 	}
+	fetchKinds() {
+		this.$http.get(`${this.baseUrl}/kinds`)
+			.then((response: IRequestResult<Array<ILookUp>>) => {
+				this.kinds = response.data
+			})
+	}
+	/*fetchTypes() {
+		this.$http.get(`${this.baseUrl}/types`)
+			.then((response: IRequestResult<Array<ILookUp>>) => {
+				this.types = response.data
+			})
+	}*/
+	queryTypes(kindId: number) {
+		var obj = {kindId:kindId}
+		this.$http.post(`${this.baseUrl}/types/query`, obj)
+			.then((response: IRequestResult<Array<ILookUp>>) => {
+				this.types = response.data
+			})
+	}
 
 	saveRecord(record: ILookUp) {
 		this.saving = true
@@ -80,9 +105,10 @@ class SettingCtrl {
 				.then((response: IRequestResult<ILookUp>) => {
 					this.saving = false
 					if (response.success) {
-						var recordIndex = _.findIndex(this.records, { id: record.id })
-						this.records[recordIndex] = response.data
+						//var recordIndex = _.findIndex(this.records, { id: record.id })
+						//this.records[recordIndex] = response.data
 						this.closeForm()
+						this.fetch()
 					}
 				})
 		} else {
@@ -91,8 +117,9 @@ class SettingCtrl {
 				.then((response: IRequestResult<ILookUp>) => {
 					this.saving = false
 					if (response.success) {
-						this.records.push(response.data)
+						//this.records.push(response.data)						
 						this.closeForm()
+						this.fetch()
 					}
 				})
 		}
@@ -105,9 +132,10 @@ class SettingCtrl {
 				this.$http.delete(`${this.baseUrl}/${this.model.name}?id=${record.id}`).then((response: IRequestResult<ILookUp>) => {
 					this.deleting = false
 					if (response.success) {
-						var recordIndex = _.findIndex(this.records, { id: record.id })
-						this.records.splice(recordIndex, 1)
+						//var recordIndex = _.findIndex(this.records, { id: record.id })
+						//this.records.splice(recordIndex, 1)
 						this.closeForm()
+						this.fetch()
 					}
 				})
 			}

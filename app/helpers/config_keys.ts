@@ -18,6 +18,9 @@ class Routes {
 	static get Login() { return "login" }
 	static get UnAuthorized() { return "unauthorized" }
 	static get Dashboard() { return "dashboard" }
+	static get Results() { return "results" }
+	static get Questions() { return "questions" }
+	static get Subscriptions() { return "subscriptions" }
 	static get Reports() { return "reports" }
 	static get ReportViewer() { return "reportViewer" }
 	static get Settings() { return "settings" }
@@ -86,7 +89,9 @@ class AppControllers {
 
 class LookUpStores {
 	static get Users() { return "users" }
-	static get Titles() { return "titles" }
+	static get Kinds() { return "kinds" }
+	static get Types() { return "types" }
+	static get Categories() { return "categories" }
 }
 
 

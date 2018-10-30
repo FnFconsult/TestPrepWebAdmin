@@ -16,9 +16,9 @@ interface ILookUpModel {
 class LookUps {
     static get Models(): Array<ILookUpModel> {
         return [
-            { label: "Title", name: "title", store: LookUpStores.Titles, route: Routes.GenericSettings, hidden: false },
-            { label: "Users", name: "user", store: LookUpStores.Users, route: Routes.GenericSettings, hidden: true },
-            // { label: "App Setting", name: "appsetting", store: "appsetting", route: Routes.GenericSettings, hidden: false }
+            { label: "Categories", name: "categories", store: LookUpStores.Categories, route: Routes.GenericSettings, hidden: false },
+            { label: "Types", name: "types", store: LookUpStores.Types, route: Routes.GenericSettings, hidden: false },
+            { label: "Kinds", name: "kinds", store: LookUpStores.Kinds, route: Routes.GenericSettings, hidden: false }
         ]
     };
 }

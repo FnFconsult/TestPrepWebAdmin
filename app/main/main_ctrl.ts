@@ -58,7 +58,10 @@ class MainCtrl {
     setUserMenus() {
         let menus: Array<IMenuItem> = [
             { label: "Dashboard", route: Routes.Dashboard, icon: "fa fa-dashboard",privilege: "Dashboard", header: false },
-            { label: "Reports", route: Routes.Reports, icon: "fa fa-bar-chart-o", privilege: "Reports", header: false },
+            { label: "Test Results", route: Routes.Results, icon: "fa fa-bar-chart-o", privilege: "Questions", header: false },
+            { label: "Questions", route: Routes.Questions, icon: "fa fa-question-circle", privilege: "Questions", header: false },
+            { label: "Subscriptions", route: Routes.Subscriptions, icon: "fa fa-cubes", privilege: "Subscriptions", header: false },
+            { label: "Reports", route: Routes.Reports, icon: "fa fa-flag", privilege: "Reports", header: false },
             { label: "Settings", route: Routes.Settings, icon: "fa fa-cogs", privilege: "Settings", header: false },
             { label: "Manage Users", route: Routes.Users, icon: "fa fa-users", privilege: "Administration", header: false },
         ]

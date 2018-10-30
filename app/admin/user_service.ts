@@ -23,7 +23,7 @@ class UserService implements IUserService {
 
 	get() {
 		let defer = this.$q.defer<IRequestResult<IUser[]>>()
-		this.$http.get(`${this.baseUrl}/account/getusers`).then((response: IRequestResult<Array<IUser>>) => {
+		this.$http.get(`${this.baseUrl}/admin/getusers`).then((response: IRequestResult<Array<IUser>>) => {
 			defer.resolve(response)
 		})
 		return defer.promise
@@ -31,7 +31,7 @@ class UserService implements IUserService {
 
 	find(id: number) {
 		let defer = this.$q.defer<IRequestResult<IUser>>()
-		this.$http.get(`${this.baseUrl}/account/getuser?id=${id}`).then((response: IRequestResult<IUser>) => {
+		this.$http.get(`${this.baseUrl}/admin/getuser?id=${id}`).then((response: IRequestResult<IUser>) => {
 			defer.resolve(response)
 		})
 		return defer.promise
@@ -39,7 +39,7 @@ class UserService implements IUserService {
 
 	query(params: IUserQuery) {
 		let defer = this.$q.defer<IRequestResult<IUser[]>>()
-		this.$http.post(`${this.baseUrl}/account/queryusers`, params).then((response: IRequestResult<Array<IUser>>) => {
+		this.$http.post(`${this.baseUrl}/admin/queryusers`, params).then((response: IRequestResult<Array<IUser>>) => {
 			defer.resolve(response)
 		})
 		return defer.promise
@@ -48,11 +48,11 @@ class UserService implements IUserService {
 	save(user: IUser) {
 		let defer = this.$q.defer<IRequestResult<IUser>>()
 		if (user.id) {
-			this.$http.put(`${this.baseUrl}/account/updateuser`, user).then((response: IRequestResult<IUser>) => {
+			this.$http.put(`${this.baseUrl}/admin/updateuser`, user).then((response: IRequestResult<IUser>) => {
 				defer.resolve(response)
 			})
 		} else {
-			this.$http.post(`${this.baseUrl}/account/createuser`, user).then((response: IRequestResult<IUser>) => {
+			this.$http.post(`${this.baseUrl}/admin/createuser`, user).then((response: IRequestResult<IUser>) => {
 				defer.resolve(response)
 			})
 		}
@@ -61,7 +61,7 @@ class UserService implements IUserService {
 
 	delete(id: string) {
 		let defer = this.$q.defer<IRequestResult<IUser>>()
-		this.$http.delete(`${this.baseUrl}/account/deleteuser?id=${id}`).then((response: IRequestResult<IUser>) => {
+		this.$http.delete(`${this.baseUrl}/admin/deleteuser?id=${id}`).then((response: IRequestResult<IUser>) => {
 			defer.resolve(response)
 		})
 		return defer.promise

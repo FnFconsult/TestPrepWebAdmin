@@ -29,7 +29,7 @@ class RoleService implements IRoleService {
 
     privileges() {
         let defer = this.$q.defer<IRequestResult<string[]>>()
-        this.$http.get(`${this.baseUrl}/account/getroles`).then((response: IRequestResult<Array<string>>) => {
+        this.$http.get(`${this.baseUrl}/admin/getroles`).then((response: IRequestResult<Array<string>>) => {
             defer.resolve(response)
         })
         return defer.promise
@@ -51,7 +51,7 @@ class RoleService implements IRoleService {
         theProfile.privileges = profile.privileges.toString()
 
         if (profile.id) {
-            this.$http.put(`${this.baseUrl}/account/updateprofile`, theProfile).then((response: IRequestResult<IRole>) => {
+            this.$http.put(`${this.baseUrl}/admin/updateprofile`, theProfile).then((response: IRequestResult<IRole>) => {
                 if (response.data.privileges) {
                     response.data.privileges = response.data.privileges.toString().split(',')
                 }

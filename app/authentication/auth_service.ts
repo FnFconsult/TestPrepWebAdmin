@@ -43,32 +43,16 @@ class AuthService implements IAuthService {
 	login(loginDetails: ILoginParams) {
 		let defer = this.$q.defer<IRequestResult<IUser>>()
 
-		console.warn("Auth not implemented!!!")
-
-		setTimeout(() => {
-			let res = <IRequestResult<IUser>>{
-				total: 0,
-				message: "Login successfull",
-				success: true,
-				data: <IUser>{
-					id: 1, name: loginDetails.username,
-					username: loginDetails.username,
-					role: null, token: window.btoa(loginDetails.password)
-				}
-			}
-			defer.resolve(res)
-		}, 200);
-
-		// this.$http.post(`${this.baseUrl}/account/login`,
-		// 	loginDetails).then((response: IRequestResult<IUser>) => {
-		// 		defer.resolve(response)
-		// 	})
+		 this.$http.post(`${this.baseUrl}/admin/login`,
+		 	loginDetails).then((response: IRequestResult<IUser>) => {
+		 		defer.resolve(response)
+		 	})
 		return defer.promise
 	}
 
 	changePassword(passwordDetails: IChangePasswordParams) {
 		let defer = this.$q.defer<any>()
-		this.$http.post(`${this.baseUrl}/account/changepassword`,
+		this.$http.post(`${this.baseUrl}/admin/changepassword`,
 			passwordDetails).then((response) => {
 				defer.resolve(response)
 			})
@@ -76,22 +60,14 @@ class AuthService implements IAuthService {
 	}
 
 	logOut() {
-		let defer = this.$q.defer<IRequestResult<any>>()
-		console.warn("Logout not implemented.")
-		setTimeout(() => {
-			localStorage.removeItem(StoreKeys.CurrentUser)
-			this.currentUser = null
-			defer.resolve(<IRequestResult<boolean>>{ success: true })
-		}, 100);
-
-		// this.$http.get(`${this.baseUrl}/account/logout`).then((response: IRequestResult<any>) => {
-		// 	if (response.success) {
-		// 		localStorage.removeItem(StoreKeys.CurrentUser)
-		// 		this.currentUser = null
-		// 	}
-		// 	defer.resolve(response)
-		// });
-
+		let defer = this.$q.defer<IRequestResult<any>>()		
+		 this.$http.get(`${this.baseUrl}/admin/logout`).then((response: IRequestResult<any>) => {
+		 	if (response.success) {
+		 		localStorage.removeItem(StoreKeys.CurrentUser)
+		 		this.currentUser = null
+			}
+		 	defer.resolve(response)
+		 });
 		return defer.promise
 	}
 
