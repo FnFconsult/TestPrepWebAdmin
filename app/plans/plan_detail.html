@@ -1,0 +1,74 @@
+<div class="pageheader_container">
+    <div class="pageheader">
+        <div class="btn-group btn-breadcrumb">
+            <a ui-sref="questions" class="btn btn-default">
+                <i class="fa fa-question-circle"></i> Questions
+            </a>
+            <a class="btn">
+                <b>View Question</b>
+            </a>
+        </div>
+    </div>
+</div>
+
+<page-content>
+    <div class="containerx">
+        <div class="card bg-white">
+            <div class="card-header header-line">
+                <a ng-if="questionVm.question.id" ng-click="questionVm.delete(questionVm.question.id)" class="btn btn-danger pull-right" style="margin-left: 5px;"><i class="fa fa-ban"></i>Delete</a>
+                <a ng-if="questionVm.question.id" ng-click="questionVm.openForm(questionVm.question.id)" class="btn btn-default pull-right"><i class="fa fa-edit"></i>Edit</a>
+                <loading ng-if="questionVm.loading" class="pull-right"></loading>
+                <h2>
+                    {{questionVm.question.name || 'Question View'}}
+                    <small>Question details.</small>
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="card-body" style="min-height: 340px;">
+                    <div class="row">
+
+                        <table class="table table-bordered lbl-val-table">
+                            <tbody>
+                                <tr>
+                                    <th>Category:</th>
+                                    <td>{{questionVm.question.category}}</td>
+                                    <th>Type:</th>
+                                    <td>{{questionVm.question.type}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Question</th>
+                                    <td colspan="3">{{questionVm.question.questionText}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Option 1:</th>
+                                    <td>{{questionVm.question.option1}}</td>
+                                    <th>Option 2:</th>
+                                    <td>{{questionVm.question.option2}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Option 3:</th>
+                                    <td>{{questionVm.question.option3}}</td>
+                                    <th>Option 4:</th>
+                                    <td>{{questionVm.question.option4}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Option 5:</th>
+                                    <td>{{questionVm.question.option5}}</td>
+                                    <th>Answer:</th>
+                                    <td>{{questionVm.question.answer}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Reason:</th>
+                                    <td colspan="3">
+                                        {{questionVm.question.reason}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</page-content>

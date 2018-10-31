@@ -24,7 +24,12 @@ class Routes {
 	static get QuestionView() { return "questionview" }
 	static get QuestionsUpload() { return "questionsupload" }
 	static get Subscriptions() { return "subscriptions" }
+	static get SubscriptionView() { return "subscriptionview" }
 	static get Payments() { return "payments" }
+	static get PaymentView() { return "paymentsview" }
+	static get Plans() { return "plans" }
+	static get PlanForm() { return "planform" }
+	static get PlanView() { return "planview" }
 	static get Reports() { return "reports" }
 	static get ReportViewer() { return "reportViewer" }
 	static get Settings() { return "settings" }
@@ -70,6 +75,7 @@ class AppServices {
 	static get LookUpService() { return "LookUpService" }
 	static get StatsService() { return "StatsService" }
 	static get QuestionService() { return "QuestionService" }
+	static get PlanService() { return "PlanService" }
 }
 
 class AppControllers {
@@ -88,6 +94,8 @@ class AppControllers {
 	static get QuestionFormCtrl() { return 'QuestionFormCtrl' }
 	static get QuestionDetailCtrl() { return 'QuestionDetailCtrl' }
 	static get QuestionsUploadCtrl() { return 'QuestionsUploadCtrl' }
+	static get PlansCtrl() { return 'PlansCtrl' }
+	static get PlanFormCtrl() { return 'PlanFormCtrl' }
 }
 
 class LookUpStores {

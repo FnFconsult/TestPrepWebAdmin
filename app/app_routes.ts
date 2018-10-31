@@ -136,6 +136,15 @@ let AppRoutes = ($stateProvider: any,
             authorize: true,
             permission: ''
         })
+        .state(Routes.Plans, {
+            url: '/plans',
+            template: require('./plans/plans.html'),
+            controller: 'PlansCtrl',
+            controllerAs: 'plansVm',
+            nav: "plans",
+            authorize: true,
+            permission: ''
+        })
 
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise(Routes.Dashboard);

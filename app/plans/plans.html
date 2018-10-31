@@ -1,0 +1,57 @@
+<page-header title="Plans" icon="fa fa-map">
+</page-header>
+<page-content>
+    <div ng-class="plansVm.gridSize" class="no-padding card bg-white">
+        <div class="card-header header-line">
+            <loading ng-if="plansVm.loading" class="pull-right"></loading>
+            <filter-box ng-hide="plansVm.loading" class="pull-right clear-padding-right" name="Name" on-search="plansVm.fetch(filter)" placeholder="Search by name" advance="true">
+                <input type="number" class="form-control" ng-model="filter.amountFrom" placeholder="Amount From" />
+                <input type="number" class="form-control" ng-model="filter.amountTo" placeholder="Amount To" />
+            </filter-box>
+            <a type="button" ng-if="!plansVm.loading" style="margin-right: 10px;" class="btn btn-default pull-right" ui-sref="planform">
+                <i class="fa fa-plus"></i>Add New Plan
+            </a>
+            <h2>
+                Subscription Plans
+                <small>Showing list of Plans</small>
+            </h2>
+        </div>
+        <div class="card-body no-padding">
+            <div class="table-responsive">
+                <table class="table md table-hover">
+                    <thead>
+                        <tr>
+                            <th class="num_col_1">#</th>
+                            <th>Name</th>
+                            <th>Amount (GHS)</th>
+                            <th>Duration (Days)</th>
+                            <th>Created On</th>
+                            <th>Created By</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="plan in plansVm.records" class="pointer" ng-click="plansVm.open(plan.id)">
+                            <td>{{((plansVm.currentPage - 1) * plansVm.recordSize) + $index + 1}}</td>
+                            <td>{{plan.name}}</td>
+                            <td>{{plan.Amount | currency:'GHS '}}</td>
+                            <td>{{plan.duration}}</td>
+                            <td>{{plan.createdAt | date:'medium'}}</td>
+                            <td>{{plan.createdBy}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <span>Showing Page: {{plansVm.currentPage}} of {{plansVm.totalPages}}</span>
+            <span class="pull-right">
+                    <div class="btn-group">
+                            <button type="button" class="btn btn-default" ng-disabled="plansVm.currentPage == 1" ng-click="plansVm.pageChanged(plansVm.currentPage-1)">&laquo; Previous</button>
+                            <button type="button" class="btn btn-default" disabled><b>{{plansVm.currentPage}}</b> of <b>{{plansVm.totalPages}}</b></button>
+                            <button type="button" class="btn btn-default" ng-disabled="plansVm.currentPage == plansVm.totalPages" ng-click="plansVm.pageChanged(plansVm.currentPage+1)">&raquo; Next</button>
+                        </div>
+            </span>
+        </div>
+    </div>
+    </div>
+</page-content>
