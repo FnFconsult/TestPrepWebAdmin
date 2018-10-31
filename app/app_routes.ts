@@ -100,6 +100,42 @@ let AppRoutes = ($stateProvider: any,
             authorize: true,
             permission: ''
         })
+        .state(Routes.Questions, {
+            url: '/questions',
+            template: require('./questions/questions.html'),
+            controller: 'QuestionsCtrl',
+            controllerAs: 'questionsVm',
+            nav: "questions",
+            authorize: true,
+            permission: ''
+        })
+        .state(Routes.QuestionView, {
+            url: '/questionview/:id',
+            template: require('./questions/question_detail.html'),
+            controller: 'QuestionDetailCtrl',
+            controllerAs: 'questionVm',
+            nav: "questions",
+            authorize: true,
+            permission: ''
+        })
+        .state(Routes.QuestionForm, {
+            url: '/questionform/:id',
+            template: require('./questions/question_form.html'),
+            controller: 'QuestionFormCtrl',
+            controllerAs: 'questionVm',
+            nav: "questions",
+            authorize: true,
+            permission: ''
+        })
+        .state(Routes.QuestionsUpload, {
+            url: '/questionsupload',
+            template: require('./questions/questions_upload.html'),
+            controller: 'QuestionsUploadCtrl',
+            controllerAs: 'questionsVm',
+            nav: "questions",
+            authorize: true,
+            permission: ''
+        })
 
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise(Routes.Dashboard);

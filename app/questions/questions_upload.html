@@ -1,0 +1,89 @@
+<div class="pageheader_container">
+    <div class="pageheader">
+        <div class="btn-group btn-breadcrumb">
+            <a ui-sref="questions" class="btn btn-default">
+                <i class="fa fa-question-circle"></i> Questions
+            </a>
+            <a href="" class="btn">
+                <b>Upload Questions</b>
+            </a>
+        </div>
+        <loading ng-if="questionsVm.loading" class="pull-right"></loading>
+    </div>
+</div>
+
+<page-content>
+    <div class="containerx card bg-white">
+        <div class="card-body" style="min-height: 340px;">
+            <div class="row">
+                <div class="form-group col-sm-4">
+                    <label for="Name">Select File:</label>
+                    <input type="file" id="file" name="file" accept=".xlsx" class="form-control" onchange="angular.element(this).scope().fileChanged(this.files);" />
+                </div>
+            </div>
+            <div class="row" ng-if="questionsVm.questions">
+                <hr/>
+                <div class="no-padding">
+                    <div class="panel panel-default top-default">
+                        <div class="table-responsive">
+                            <table class="table md table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="num_col_1">#</th>
+                                        <th class="no-wrap">Category</th>
+                                        <th>Question</th>
+                                        <th class="no-wrap">Option 1</th>
+                                        <th class="no-wrap">Option 2</th>
+                                        <th class="no-wrap">Option 3</th>
+                                        <th class="no-wrap">Option 4</th>
+                                        <th class="no-wrap">Option 5</th>
+                                        <th class="no-wrap">Answer</th>
+                                        <th class="no-wrap">Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="question in questionsVm.questions" class="pointer">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <input type="text" class="flat-input" ng-model="question.categoryName">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="flat-input" ng-model="question.questionText">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.option1">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.option2">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.option3">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.option4">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.option5">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.answer">
+                                        </td>
+                                        <td class="no-wrap">
+                                            <input type="text" class="flat-input" ng-model="question.reason">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding: 15px;" ng-if="questionsVm.questions">
+                <button type="button" class="btn btn-success" ng-click="questionsVm.save()" btn-loading="questionsVm.isLoading" data-loading-text="Uploading..."><i class='fa fa-save'></i>Save Upload</button>
+            </div>
+        </div>
+
+    </div>
+
+</page-content>

@@ -1,0 +1,69 @@
+<page-header title="Questions" icon="fa fa-question-circle">
+    <a type="button" ng-if="!questionsVm.loading" style="margin-right: 10px;" class="btn btn-success pull-right" ui-sref="questionsupload">
+        <i class="fa fa-upload"></i> Upload Questions
+    </a>
+</page-header>
+
+<page-content>
+    <div ng-class="questionsVm.gridSize" class="no-padding card bg-white">
+        <div class="card-header header-line">
+            <loading ng-if="questionsVm.loading" class="pull-right"></loading>
+            <filter-box ng-hide="questionsVm.loading" class="pull-right clear-padding-right" name="Question" on-search="questionsVm.fetch(filter)" placeholder="Search by question" advance="true">
+                <input type="text" class="form-control" ng-model="filter.batch" placeholder="Batch" />
+                <input type="text" class="form-control" ng-model="filter.reason" placeholder="Reason" />
+                <select ui-select2="{allowClear:true}" class="form-control" ng-model="filter.kindId" data-placeholder="Kind" ng-options="x.id as x.name for x in questionsVm.kinds" ng-change="questionsVm.queryTypes(filter.kindId)" ng-disabled="!questionsVm.kinds">
+                </select>
+                <select ui-select2="{allowClear:true}" class="form-control" ng-model="filter.typeId" data-placeholder="Type" ng-options="x.id as x.name for x in questionsVm.types" ng-change="questionsVm.queryCategories(filter.typeId)" ng-disabled="!questionsVm.types">
+                </select>
+                <select ui-select2="{allowClear:true}" class="form-control" ng-model="filter.categoryId" data-placeholder="Category" ng-options="x.id as x.name for x in questionsVm.categories" ng-disabled="!questionsVm.categories">
+                </select>
+            </filter-box>
+            <a type="button" ng-if="!questionsVm.loading" style="margin-right: 10px;" class="btn btn-default pull-right" ui-sref="questionform">
+                <i class="fa fa-plus"></i>Add New Question
+            </a>
+            <h2>
+                Questions
+                <small>Showing list of Questions</small>
+            </h2>
+        </div>
+        <div class="card-body no-padding">
+            <div class="table-responsive">
+                <table class="table md table-hover">
+                    <thead>
+                        <tr>
+                            <th class="num_col_1">#</th>
+                            <th>Batch</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Kind</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="question in questionsVm.records" class="pointer" ng-click="questionsVm.open(question.id)">
+                            <td>{{((questionsVm.currentPage - 1) * questionsVm.recordSize) + $index + 1}}</td>
+                            <td>{{question.batch}}</td>
+                            <td>{{question.questionText | limitTo: 30}}</td>
+                            <td>{{question.answer | limitTo: 15}}</td>
+                            <td>{{question.category}}</td>
+                            <td>{{question.type}}</td>
+                            <td>{{question.kind}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <span>Showing Page: {{questionsVm.currentPage}} of {{questionsVm.totalPages}}</span>
+            <span class="pull-right">
+                    <div class="btn-group">
+                            <button type="button" class="btn btn-default" ng-disabled="questionsVm.currentPage == 1" ng-click="questionsVm.pageChanged(questionsVm.currentPage-1)">&laquo; Previous</button>
+                            <button type="button" class="btn btn-default" disabled><b>{{questionsVm.currentPage}}</b> of <b>{{questionsVm.totalPages}}</b></button>
+                            <button type="button" class="btn btn-default" ng-disabled="questionsVm.currentPage == questionsVm.totalPages" ng-click="questionsVm.pageChanged(questionsVm.currentPage+1)">&raquo; Next</button>
+                        </div>
+            </span>
+        </div>
+    </div>
+    </div>
+</page-content>

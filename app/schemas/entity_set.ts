@@ -12,6 +12,7 @@ interface IAuditFields extends IhasId {
 interface ILookUp extends IAuditFields {
 	name: string
 	notes: string
+	kindId: number
 }
 
 interface IUser {

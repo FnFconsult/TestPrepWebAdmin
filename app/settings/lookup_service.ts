@@ -25,6 +25,8 @@ class LookUps {
 
 interface ILookUpService {
     fetch(model: string): angular.IPromise<IRequestResult<Array<any>>>;
+    queryTypes(params: any): angular.IPromise<IRequestResult<Array<any>>>;
+    queryCategories(params: any): angular.IPromise<IRequestResult<Array<any>>>;
 }
 
 class LookUpService implements ILookUpService {
@@ -44,6 +46,22 @@ class LookUpService implements ILookUpService {
                 defer.resolve(response)
             })
     
+            return defer.promise
+        }
+
+        queryTypes(params: any) {
+            let defer = this.$q.defer<IRequestResult<Array<any>>>()
+            this.$http.post(`${this.baseUrl}/types/query`,params).then((response: IRequestResult<Array<any>>) => {
+                defer.resolve(response)
+            })    
+            return defer.promise
+        }
+
+        queryCategories(params: any) {
+            let defer = this.$q.defer<IRequestResult<Array<any>>>()
+            this.$http.post(`${this.baseUrl}/categories/query`,params).then((response: IRequestResult<Array<any>>) => {
+                defer.resolve(response)
+            })    
             return defer.promise
         }
     

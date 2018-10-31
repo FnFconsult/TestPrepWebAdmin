@@ -61,6 +61,7 @@ class SettingCtrl {
 		this.formTitle = `Edit ${this.model.label}`
 		this.newRecord = angular.copy(record)
 		this.setUpFormView()
+		this.queryTypes(record.kindId)
 	}
 
 	closeForm() {

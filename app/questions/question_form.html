@@ -1,0 +1,92 @@
+<div class="pageheader_container">
+    <div class="pageheader">
+        <div class="btn-group btn-breadcrumb">
+            <a ui-sref="questions" class="btn btn-default">
+                <i class="fa fa-question-circle"></i> Questions
+            </a>
+            <a class="btn">
+                <b>{{questionVm.title || "New Question"}}</b>
+            </a>
+        </div>
+    </div>
+</div>
+
+<page-content>
+    <div class="containerx no-padding">
+        <form ng-submit="questionVm.save()">
+            <div class="card bg-white no-padding card-form">
+                <div class="card-header header-line">
+                    <h2>
+                        {{questionVm.title || "New Question"}}
+                        <small>Question details</small>
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>Kind <i class="fa fa-asterisk color-maroon"></i></label>
+                            <select ui-select2="{allowClear:true}" class="form-control" ng-model="questionVm.newQuestion.kindId" data-placeholder="Kind" ng-options="x.id as x.name for x in questionVm.kinds" ng-change="questionVm.queryTypes(questionVm.newQuestion.kindId)" ng-disabled="!questionVm.kinds">
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Type <i class="fa fa-asterisk color-maroon"></i></label>
+                            <select ui-select2="{allowClear:true}" class="form-control" ng-model="questionVm.newQuestion.typeId" data-placeholder="Type" ng-options="x.id as x.name for x in questionVm.types" ng-change="questionVm.queryCategories(questionVm.newQuestion.typeId)" ng-disabled="!questionVm.types">
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Category <i class="fa fa-asterisk color-maroon"></i></label>
+                            <select ui-select2="{allowClear:true}" class="form-control" ng-model="questionVm.newQuestion.categoryId" data-placeholder="Category" ng-options="x.id as x.name for x in questionVm.categories" ng-disabled="!questionVm.categories">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Question</label>
+                                <textarea id="Question" class="form-control" ng-model="questionVm.newQuestion.questionText" cols="5" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label>Option 1</label>
+                            <input type="text" class="form-control" ng-model="questionVm.newQuestion.option1" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Option 2</label>
+                            <input type="text" class="form-control" ng-model="questionVm.newQuestion.option2" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Option 3</label>
+                            <input type="text" class="form-control" ng-model="questionVm.newQuestion.option3" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Option 4</label>
+                            <input type="text" class="form-control" ng-model="questionVm.newQuestion.option4" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Option 5</label>
+                            <input type="text" class="form-control" ng-model="questionVm.newQuestion.option5" />
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Answer</label>
+                            <input type="text" class="form-control" ng-model="questionVm.newQuestion.answer" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Reason</label>
+                                <textarea id="Question" class="form-control" ng-model="questionVm.newQuestion.reason" cols="2" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-success" btn-loading="questionVm.saving" data-loading-text="Saving..." type="submit"><i class="fa fa-save"></i> Save Changes</button>
+                    <a class="btn btn-default" type="button" href="" ui-sref="questions"><i class="fa fa-ban"></i> Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</page-content>
