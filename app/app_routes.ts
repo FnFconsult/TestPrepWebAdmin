@@ -103,7 +103,7 @@ let AppRoutes = ($stateProvider: any,
         .state(Routes.Questions, {
             url: '/questions',
             template: require('./questions/questions.html'),
-            controller: 'QuestionsCtrl',
+            controller: AppControllers.QuestionsCtrl,
             controllerAs: 'questionsVm',
             nav: "questions",
             authorize: true,
@@ -112,7 +112,7 @@ let AppRoutes = ($stateProvider: any,
         .state(Routes.QuestionView, {
             url: '/questionview/:id',
             template: require('./questions/question_detail.html'),
-            controller: 'QuestionDetailCtrl',
+            controller: AppControllers.QuestionDetailCtrl,
             controllerAs: 'questionVm',
             nav: "questions",
             authorize: true,
@@ -121,7 +121,7 @@ let AppRoutes = ($stateProvider: any,
         .state(Routes.QuestionForm, {
             url: '/questionform/:id',
             template: require('./questions/question_form.html'),
-            controller: 'QuestionFormCtrl',
+            controller: AppControllers.QuestionFormCtrl,
             controllerAs: 'questionVm',
             nav: "questions",
             authorize: true,
@@ -130,7 +130,7 @@ let AppRoutes = ($stateProvider: any,
         .state(Routes.QuestionsUpload, {
             url: '/questionsupload',
             template: require('./questions/questions_upload.html'),
-            controller: 'QuestionsUploadCtrl',
+            controller: AppControllers.QuestionsUploadCtrl,
             controllerAs: 'questionsVm',
             nav: "questions",
             authorize: true,
@@ -139,8 +139,26 @@ let AppRoutes = ($stateProvider: any,
         .state(Routes.Plans, {
             url: '/plans',
             template: require('./plans/plans.html'),
-            controller: 'PlansCtrl',
+            controller: AppControllers.PlansCtrl,
             controllerAs: 'plansVm',
+            nav: "plans",
+            authorize: true,
+            permission: ''
+        })
+        .state(Routes.PlanForm, {
+            url: '/planform/:id',
+            template: require('./plans/plan_form.html'),
+            controller: AppControllers.PlanFormCtrl,
+            controllerAs: 'planVm',
+            nav: "plans",
+            authorize: true,
+            permission: ''
+        })
+        .state(Routes.PlanView, {
+            url: '/planview/:id',
+            template: require('./plans/plan_detail.html'),
+            controller: AppControllers.PlanDetailsCtrl,
+            controllerAs: 'planVm',
             nav: "plans",
             authorize: true,
             permission: ''

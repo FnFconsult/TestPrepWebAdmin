@@ -1,11 +1,11 @@
 <div class="pageheader_container">
     <div class="pageheader">
         <div class="btn-group btn-breadcrumb">
-            <a ui-sref="questions" class="btn btn-default">
-                <i class="fa fa-question-circle"></i> Questions
+            <a ui-sref="plans" class="btn btn-default">
+                <i class="fa fa-map"></i> Plans
             </a>
             <a class="btn">
-                <b>View Question</b>
+                <b>View Plan</b>
             </a>
         </div>
     </div>
@@ -15,12 +15,12 @@
     <div class="containerx">
         <div class="card bg-white">
             <div class="card-header header-line">
-                <a ng-if="questionVm.question.id" ng-click="questionVm.delete(questionVm.question.id)" class="btn btn-danger pull-right" style="margin-left: 5px;"><i class="fa fa-ban"></i>Delete</a>
-                <a ng-if="questionVm.question.id" ng-click="questionVm.openForm(questionVm.question.id)" class="btn btn-default pull-right"><i class="fa fa-edit"></i>Edit</a>
-                <loading ng-if="questionVm.loading" class="pull-right"></loading>
+                <a ng-if="planVm.plan.id" ng-click="planVm.delete(planVm.plan.id)" class="btn btn-danger pull-right" style="margin-left: 5px;"><i class="fa fa-ban"></i>Delete</a>
+                <a ng-if="planVm.plan.id" ng-click="planVm.openForm(planVm.plan.id)" class="btn btn-default pull-right"><i class="fa fa-edit"></i>Edit</a>
+                <loading ng-if="planVm.loading" class="pull-right"></loading>
                 <h2>
-                    {{questionVm.question.name || 'Question View'}}
-                    <small>Question details.</small>
+                    {{planVm.plan.name || 'Plan View'}}
+                    <small>Plan details.</small>
                 </h2>
             </div>
             <div class="card-body">
@@ -30,38 +30,14 @@
                         <table class="table table-bordered lbl-val-table">
                             <tbody>
                                 <tr>
-                                    <th>Category:</th>
-                                    <td>{{questionVm.question.category}}</td>
-                                    <th>Type:</th>
-                                    <td>{{questionVm.question.type}}</td>
+                                    <th>Name</th>
+                                    <td colspan="3">{{planVm.plan.name}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Question</th>
-                                    <td colspan="3">{{questionVm.question.questionText}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Option 1:</th>
-                                    <td>{{questionVm.question.option1}}</td>
-                                    <th>Option 2:</th>
-                                    <td>{{questionVm.question.option2}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Option 3:</th>
-                                    <td>{{questionVm.question.option3}}</td>
-                                    <th>Option 4:</th>
-                                    <td>{{questionVm.question.option4}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Option 5:</th>
-                                    <td>{{questionVm.question.option5}}</td>
-                                    <th>Answer:</th>
-                                    <td>{{questionVm.question.answer}}</td>
-                                </tr>
-                                <tr>
-                                    <th>Reason:</th>
-                                    <td colspan="3">
-                                        {{questionVm.question.reason}}
-                                    </td>
+                                    <th>Amount (GHS):</th>
+                                    <td>{{planVm.plan.amount}}</td>
+                                    <th>Duration (Days):</th>
+                                    <td>{{planVm.plan.duration}}</td>
                                 </tr>
                             </tbody>
                         </table>

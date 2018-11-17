@@ -21,6 +21,7 @@ import { QuestionsCtrl } from './questions/questions_ctrl';
 import { QuestionsUploadCtrl } from './questions/questions_upload_ctrl';
 import { PlansCtrl } from './plans/plans_ctrl';
 import { PlanFormCtrl } from './plans/plan_form_ctrl';
+import { PlanDetailsCtrl } from './plans/plan_detail_ctrl';
 import { ReportViewerCtrl } from './reports/report_viewer_ctrl';
 import { ReportsCtrl } from './reports/reports_ctrl';
 import { ReportsConfig } from './reports/report_config';
@@ -49,6 +50,7 @@ let app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ui.select2', 'ngA
 	.controller(AppControllers.QuestionsUploadCtrl, QuestionsUploadCtrl)
 	.controller(AppControllers.PlansCtrl, PlansCtrl)
 	.controller(AppControllers.PlanFormCtrl, PlanFormCtrl)
+	.controller(AppControllers.PlanDetailsCtrl, PlanDetailsCtrl)
 	.service(AppServices.RequestInterceptor, RequestInterceptor)
 	.service(AppServices.AuthService, AuthService)
 	.service(AppServices.UserService, UserService)

@@ -33,7 +33,7 @@
                         <tr ng-repeat="plan in plansVm.records" class="pointer" ng-click="plansVm.open(plan.id)">
                             <td>{{((plansVm.currentPage - 1) * plansVm.recordSize) + $index + 1}}</td>
                             <td>{{plan.name}}</td>
-                            <td>{{plan.Amount | currency:'GHS '}}</td>
+                            <td>{{plan.amount | currency:'GHS '}}</td>
                             <td>{{plan.duration}}</td>
                             <td>{{plan.createdAt | date:'medium'}}</td>
                             <td>{{plan.createdBy}}</td>

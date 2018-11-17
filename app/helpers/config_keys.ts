@@ -96,6 +96,7 @@ class AppControllers {
 	static get QuestionsUploadCtrl() { return 'QuestionsUploadCtrl' }
 	static get PlansCtrl() { return 'PlansCtrl' }
 	static get PlanFormCtrl() { return 'PlanFormCtrl' }
+	static get PlanDetailsCtrl() { return 'PlanDetailsCtrl' }
 }
 
 class LookUpStores {
