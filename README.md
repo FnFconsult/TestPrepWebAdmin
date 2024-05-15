@@ -4,8 +4,6 @@ This is a seed application for angularjs and typescript using webpack.
 
 
 ## Getting Started
-+ `git clone https://github.com/adjeteyadjei/angular-typescript-starter.git`
-+ `cd angular-typescript-starter`
 + `npm install`
 + `npm start`. This will start the app on port 6500
 + You can then access the app with this url `http://localhost:6500`
